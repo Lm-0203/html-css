@@ -172,6 +172,8 @@ div:hover::after {
       height: 100px;
       border: 10px solid black;
       /* 支持渐变色 */
+      /* liner-gradient: 线性渐变 */
+      /* radial-gradient: 径向渐变 */
       border-image-source: linear-gradient(red, yellow);
       border-image-slice: 10;
     }
@@ -277,7 +279,49 @@ div {
 }
 ```
 
-
 #### background-repeat
+
 no-repeat: 不平铺
-round
+round: 平铺 + 拉伸或者压缩，取决于盒子的剩余空间能不能放下一张图
+space: 不会压缩图片改变图片的大小，不能放下一一张图片的区域用空白填充
+repeat-x
+repeat-y
+
+也可以设置多个值
+
+```css
+div {
+  /* 第一个值表示水平方向，第二值表示垂直方向 */
+  /* 但是repeat 相关的值只能写一个，因为一个值就代表俩， */
+  /* repeat-y : no-repeat repeat */
+  /* 所以写两个值话，只能 round space 互换，round space 和 repeat 相关的值搭配都不好使 */
+  background-repeat: round space;
+}
+```
+
+#### background-attachment
+
+改变图片的定位属性
+
+- fixed: 相对于可视区窗口进行定位。但是不能在容器以外显示。
+- local: 相对于容器的真实内容高度进行定位。比如容器 height 300px， 内容 height 500px，滚动容器的时候，背景图会随着容器一起滚动
+- scroll: default value, 相对于容器进行定位。和 positon: fixed 类似，无论容器有没有滚动条，不会随着滚动条滚动
+
+```css
+div {
+  border: 1px solid red;
+  height: 700px;
+  width: 500px;
+  overflow: scroll;
+  background-image: url(images/cat.jpeg);
+  background-size: 300px 400px;
+  background-repeat: no-repeat;
+  background-position: 100px 100px;
+  background-attachment: local;
+}
+```
+
+#### background-size
+cover 和 contain 都是用一张图来填充背景,都是等比例缩放图片
+cover 用一张图片填充容器，让一张图片完完整的把容器填充满, 并且是宽高等比例放大，也就是不改变图片的原始比例，有图片超出容器的情况存在，超出部分肯定会隐藏
+contain 在不改变图片的比例下，让容器完整的显示图片，有repeat的情况存在。如果设置的 no-repeat， 会有容易不能被填满的情况存在。肯定会有图片的一条边和容器完全对齐，不会有repeat多张的情况存在
