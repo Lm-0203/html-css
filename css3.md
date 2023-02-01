@@ -152,6 +152,21 @@ div:hover::after {
 }
 ```
 
+### border-color
+
+```css
+div {
+  width: 100px;
+  height: 100px;
+  border-width: 1px;
+  border-style: solid;
+  color: red;
+  /* 中转颜色值，没有border设置颜色的时候，默认值是currentColor */
+  /* currentColor的值，默认是黑色，如果设置了文字颜色，也就是color属性，那么和color的属性的属性值保持一直 */
+  /* border-color: currentColor; */
+}
+```
+
 ### border-image
 
 ```html
@@ -322,6 +337,67 @@ div {
 ```
 
 #### background-size
+
 cover 和 contain 都是用一张图来填充背景,都是等比例缩放图片
 cover 用一张图片填充容器，让一张图片完完整的把容器填充满, 并且是宽高等比例放大，也就是不改变图片的原始比例，有图片超出容器的情况存在，超出部分肯定会隐藏
-contain 在不改变图片的比例下，让容器完整的显示图片，有repeat的情况存在。如果设置的 no-repeat， 会有容易不能被填满的情况存在。肯定会有图片的一条边和容器完全对齐，不会有repeat多张的情况存在
+contain 在不改变图片的比例下，让容器完整的显示图片，有 repeat 的情况存在。如果设置的 no-repeat， 会有容易不能被填满的情况存在。肯定会有图片的一条边和容器完全对齐，不会有 repeat 多张的情况存在
+
+### linear-gradient
+
+第一个值写方向，可以是 top，bottom，right，left，或者这四个值两两组和， top right 等等。
+
+```css
+div {
+  width: 200px;
+  height: 200px;
+  background-image: linear-gradient(to right, #0f0, #ff0);
+}
+```
+
+第一个值也可以是角度
+0deg -> 从下到上
+90deg -> 从左到右
+180deg -> 从上到下
+270deg -> 从右到左
+感觉是 从 0 -> 360 是 一个向上的箭头，顺时针旋转一圈，箭头方向，表示渐变的方向
+
+```css
+div {
+  width: 200px;
+  height: 200px;
+  background-image: linear-gradient(270deg, #0f0, #ff0);
+}
+```
+
+颜色值可以是两个值，第一个值是色值(只要是颜色值就可以，透明色 transparent 也可以)，第二个值是色值的结束位置, 也是下一个色值的开始位置，或者是开始有渐变的位置。
+如果到了色值的结束位置，但是后面没有其他颜色，容器也没有填满，当前色值会继续填充，直到把容器填满
+
+```css
+div {
+  width: 200px;
+  height: 200px;
+  /*  */
+  background-image: linear-gradient(90deg, #0f0 20px, #ff0 30px, #f00 50px);
+}
+```
+
+### radial-gradient
+
+第一个值可以是圆心的位置，默认是在正中间
+ellipse farthest-corner at 50px 50px
+ellipse | circle
+farthest-corner | farthest-side | closest-corner | closest-side
+50px 50px | 百分数 | top bottom right left 代替
+
+```css
+div {
+  width: 200px;
+  height: 200px;
+  background-image: radial-gradient(
+    ellipse farthest-corner at 50px 50px,
+    #abc,
+    #acc,
+    #989
+  );
+}
+```
