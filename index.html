@@ -6,14 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
+      body {
+        background-color: #000;
+      }
       div {
-        width: 200px;
-        height: 200px;
-        background-image: radial-gradient(ellipse farthest-corner at 50px 50px, red 20px, green 30px, yellow);
+        position: absolute;
+        left: calc(50% - 250px);
+        top: 200px;
+        font-size: 100px;
+        font-weight: bolder;
+        transition: all 0.6s;
+        -webkit-text-stroke: 1px red;
       }
     </style>
   </head>
   <body>
-    <div></div>
+    <div>死神来了</div>
   </body>
 </html>

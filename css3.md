@@ -27,10 +27,10 @@ Authoritative inquiry website: http://www.caniuse.com
 div[id]:not(:target) {
   display: none;
 }
-*/
-        /* location.hash = XXX */
-        /* 哪个div的id变成location.hash的值了，哪个div的状态 */
-        div:target {
+
+/* location.hash = XXX */
+/* 哪个div的id变成location.hash的值了，哪个div的状态 */
+div:target {
   background: red;
 }
 div.button-wrapper {
@@ -294,6 +294,32 @@ div {
 }
 ```
 
+```css
+body {
+  background-color: #000;
+}
+div {
+  position: absolute;
+  left: calc(50% - 250px);
+  top: 100px;
+  font-size: 60px;
+  font-weight: bolder;
+  transition: all 2s;
+  background-image: url(./images/sharingan.png);
+  background-size: 240px;
+  background-position: -240px;
+  background-repeat: no-repeat;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 10px 10px 3px #ddd1;
+}
+
+div:hover {
+  background-position: 0px;
+}
+```
+
 #### background-repeat
 
 no-repeat: 不平铺
@@ -399,5 +425,54 @@ div {
     #acc,
     #989
   );
+}
+```
+
+### text-shadow
+
+<!-- x y blur color -->
+
+#### 浮雕 + 镂刻
+
+```css
+body {
+  background-color: #ccc;
+}
+.div1 {
+  position: absolute;
+  left: calc(50% - 250px);
+  top: 100px;
+  width: 500px;
+  height: 200px;
+  font-size: 60px;
+  color: #ccc;
+  text-shadow: 1px 1px 1px #000, -1px -1px 1px #fff;
+}
+.div2 {
+  position: absolute;
+  left: calc(50% - 250px);
+  top: 200px;
+  width: 500px;
+  height: 200px;
+  font-size: 60px;
+  color: #ccc;
+  text-shadow: -1px -1px 1px #000, 1px 1px 1px #fff;
+}
+```
+
+### -webkit-text-stroke 描边
+
+```css
+body {
+  background-color: #000;
+}
+div {
+  position: absolute;
+  left: calc(50% - 250px);
+  top: 200px;
+  font-size: 100px;
+  font-weight: bolder;
+  transition: all 0.6s;
+  -webkit-text-stroke: 1px red;
 }
 ```
