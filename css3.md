@@ -476,3 +476,19 @@ div {
   -webkit-text-stroke: 1px red;
 }
 ```
+
+### column
+
+```css
+div {
+  column-count: 3;
+  column-gap: 30px;
+  column-rule: 1px solid;
+}
+p {
+  color: red;
+  /* column-span: all; */
+  padding: 10px 0;
+  -webkit-column-break-before: always;
+}
+```
