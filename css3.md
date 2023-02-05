@@ -492,3 +492,13 @@ p {
   -webkit-column-break-before: always;
 }
 ```
+
+### box
+#### box-sizing: content-box
+常规模式下(w3c标准模式下):
+boxWidth = width + border*2 + padding*2
+
+#### box-sizing: border-box
+ES6 混杂模式(怪异模式)下，
+boxWidth = width(在css中设置的width)，
+contentWidth = width - border*2 - padding *2
