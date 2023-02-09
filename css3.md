@@ -502,3 +502,35 @@ boxWidth = width + border*2 + padding*2
 ES6 混杂模式(怪异模式)下，
 boxWidth = width(在css中设置的width)，
 contentWidth = width - border*2 - padding *2
+
+### display: flex
+#### flex-grow
+当主轴方向还有剩余空间时，剩余空间根据 每一个 item 设置的比例分配
+默认值是0
+
+#### flex-shrink
+如果全部的宽度超出容器，并且不换行的话，每一个item会有缩减
+默认值是1
+计算方法
+200(width) * 1(flex-shrink) + 200(width) * 1(flex-shrink) + 400(width) * 3(flex-shrink) = 1600 (加权值)
+加权值计算时，不是用的盒子的真实宽度，是用的内容区的宽度。
+
+200 * 1
+------- * 200(超出容器的宽度) = 25px(应该缩小的宽度)
+ 1600
+
+200 * 1
+------- * 200(超出容器的宽度) = 25px(应该缩小的宽度)
+ 1600
+
+400 * 3
+------- * 200(超出容器的宽度) = 150px(应该缩小的宽度)
+ 1600
+#### flex-basis
+默认值是auto
++ 在元素没有设置宽度的时候，flex-basis代表元素的最小宽度，元素会被内容撑开
++ 在元素设置宽度是，设置的宽度是元素宽度的上限。
+  - width: 200px, flex-basis: 100px, 元素最小宽度是100px，最多增长到200px;
+  - width: 200px, flex-basis: 300px, 元素还是200px;
+
+如果 item 只设置了flex-basis，但是没有

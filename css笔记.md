@@ -271,6 +271,7 @@ a:link{
 background-clip属性的默认值是border-box，可以修改属性值
 ## 内容溢出处理
 >overflow：
+当 overflow-x, overflow-y 其中一个设置为 非visible 时，另一个属性会自动将默认值 visible 计算为 auto
 > - visible；（默认值）
 > - hidden；（溢出隐藏）
 > - scroll；（生成滚动条）
