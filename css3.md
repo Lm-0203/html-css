@@ -534,3 +534,27 @@ contentWidth = width - border*2 - padding *2
   - width: 200px, flex-basis: 300px, 元素还是200px;
 
 如果 item 只设置了flex-basis，但是没有
+
+### transition
+复合属性，可以这样写：width 2s, height 1s, 
+或者 all 3s,
+
+#### transition-property
+用来监听到底要监听哪个属性的状态改变
++ all: 监听所有具有动画改变的属性
++ 填写特定的属性：width, herght ....
+
+#### transiton-duration
+动画完成的时间
+
+#### transition-timing-function
+指定动画的运动状态
+
+#### transition-delay
+动画延迟多长时间执行
+
+#### cubic-bezier
+(x1, y1, x2, y2)
+用曲线表示一个运动状态
+起点 + 终点 + (n - 1)个控制点
+如果斜率小于0的话，方向是负的。
