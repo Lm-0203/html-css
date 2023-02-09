@@ -558,3 +558,69 @@ contentWidth = width - border*2 - padding *2
 用曲线表示一个运动状态
 起点 + 终点 + (n - 1)个控制点
 如果斜率小于0的话，方向是负的。
+
+### animation
+
+#### @keyframes
+关键帧容器
+可以两个关键帧作用到同一个容器上
+```css
+div {
+  /* 第一个属性值：关键帧名字，独一无二 */
+  /* 第二个属性值：运动时间，根据关键帧的步骤平均分配 */
+  /* 第三个属性指：运动状态, 运动状态会作用于每一帧，比如是先快后慢，0 - 25 快到慢，25 - 50 快到慢 等等等等 */
+  animation: run 4s cubic-bezier(), colorChange 4s;
+}
+@keyframes run {
+  /* 0% 可以换成 from */
+  0% {
+    left: 0;
+    top: 0;
+  }
+  25% {
+    left: 100px;
+    top: 0;
+  }
+  50% {
+    left: 100px;
+    top: 100px;
+  }
+  75% {
+    left: 0;
+    top: 100px;
+  }
+  /* 100% 可以换成 to */
+  100% {
+    left: 0;
+    top: 0;
+  }
+}
+@keyframes colorChange {
+  from {
+    background-color: red,
+  }
+  60% {
+    background-color: green,
+  }
+  to {
+    background-color: black,
+  }
+}
+```
+
+#### animation-iteration-count
+动画执行次数
+一旦动画开始都算作一个完整动画，所以延迟只会在刚开始会执行。
+infinite | number
+默认值：1
+
+#### animation-direction
+关键帧执行方向
+从 0% -> 100% 或者 100% -> 0%
+有一个值是 alternate, 代表正着来一次，倒着来一次，所以关键帧执行次数，必须大于等于2
+
+#### animation-fill-mode
+default value: none : 原始状态，不是 第一帧(0%)， 也不是最后一帧(100%)
++ both: 设置对象状态为结束或者开始时的状态 动画开始时是第一帧(0%)，结束后是最后一帧(100%)
++ backwards: 设置对象状态为开始时的状态, 也就是第一帧的状态(0%)
++ forwards: 设置对象状态为结束时的状态, 也就是最后一帧的状态(100%)
