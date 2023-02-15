@@ -687,3 +687,33 @@ div {
   animation: change-color 4s steps(1, end) forwards;
 }
 ```
+
+### rotate
+
+#### rotate X Y Z
+
+```css
+body {
+  perspective: 800px;
+  transform-style: preserve-3d;
+  perspective-origin: 300px 300px;
+}
+
+div {
+  position: absolute;
+  left: 200px;
+  top: 200px;
+  width: 200px;
+  height: 200px;
+  background-image: url(./images/cat.jpeg);
+  /* transform-origin 是根据当前元素定位的 */
+  transform-origin: 0 0;
+  /* X Y Z 的顺序不一样，最终的旋转结果也会不一样 */
+  /* 三个轴的方向，会随着图片的转动而变换方向 */
+  transform: rotateY(90deg) rotateX(0deg);
+}
+```
+
+#### rotate3d
+会绘制出一个矢量坐标轴，图片绕着这个轴转动
+

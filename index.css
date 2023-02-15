@@ -3,32 +3,22 @@
   padding: 0;
 }
 
-@keyframes change-color {
-  0% {
-    background-color: red;
-  }
-  25% {
-    background-color: green;
-  }
-  50% {
-    background-color: aqua;
-  }
-  75% {
-    background-color: antiquewhite;
-  }
-  100% {
-    background-color: yellowgreen;
-  }
+body {
+  perspective: 800px;
+  transform-style: preserve-3d;
+  perspective-origin: 300px 300px;
 }
 
 div {
-  height: 100px;
-  width: 100px;
-  background-color: red;
-  /* steps 的步数，是从一帧跳到另一帧需要多少步来实现 */
-  /* start：丢的是第一帧，保留下一帧状态，直到这段动画结束 */
-  /* end：丢的是最后一帧，保留当前帧状态，知道这段动画时间结束 */
-  /* steps(1, end) === step-end */
-  /* steps(1, start) === step-start */
-  animation: change-color 4s steps(1, end) forwards;
+  position: absolute;
+  left: 200px;
+  top: 200px;
+  width: 200px;
+  height: 200px;
+  background-image: url(./images/cat.jpeg);
+  /* transform-origin 是根据当前元素定位的 */
+  transform-origin: 0 0;
+  /* X Y Z 的顺序不一样，最终的旋转结果也会不一样 */
+  /* 三个轴的方向，会随着图片的转动而变换方向 */
+  transform: rotateY(90deg) rotateX(0deg);
 }
