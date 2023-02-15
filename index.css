@@ -1,0 +1,34 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+@keyframes change-color {
+  0% {
+    background-color: red;
+  }
+  25% {
+    background-color: green;
+  }
+  50% {
+    background-color: aqua;
+  }
+  75% {
+    background-color: antiquewhite;
+  }
+  100% {
+    background-color: yellowgreen;
+  }
+}
+
+div {
+  height: 100px;
+  width: 100px;
+  background-color: red;
+  /* steps 的步数，是从一帧跳到另一帧需要多少步来实现 */
+  /* start：丢的是第一帧，保留下一帧状态，直到这段动画结束 */
+  /* end：丢的是最后一帧，保留当前帧状态，知道这段动画时间结束 */
+  /* steps(1, end) === step-end */
+  /* steps(1, start) === step-start */
+  animation: change-color 4s steps(1, end) forwards;
+}

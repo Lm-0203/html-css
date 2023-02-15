@@ -494,23 +494,29 @@ p {
 ```
 
 ### box
+
 #### box-sizing: content-box
-常规模式下(w3c标准模式下):
+
+常规模式下(w3c 标准模式下):
 boxWidth = width + border*2 + padding*2
 
 #### box-sizing: border-box
+
 ES6 混杂模式(怪异模式)下，
-boxWidth = width(在css中设置的width)，
+boxWidth = width(在 css 中设置的 width)，
 contentWidth = width - border*2 - padding *2
 
 ### display: flex
+
 #### flex-grow
+
 当主轴方向还有剩余空间时，剩余空间根据 每一个 item 设置的比例分配
-默认值是0
+默认值是 0
 
 #### flex-shrink
-如果全部的宽度超出容器，并且不换行的话，每一个item会有缩减
-默认值是1
+
+如果全部的宽度超出容器，并且不换行的话，每一个 item 会有缩减
+默认值是 1
 计算方法
 200(width) * 1(flex-shrink) + 200(width) * 1(flex-shrink) + 400(width) * 3(flex-shrink) = 1600 (加权值)
 加权值计算时，不是用的盒子的真实宽度，是用的内容区的宽度。
@@ -526,44 +532,56 @@ contentWidth = width - border*2 - padding *2
 400 * 3
 ------- * 200(超出容器的宽度) = 150px(应该缩小的宽度)
  1600
-#### flex-basis
-默认值是auto
-+ 在元素没有设置宽度的时候，flex-basis代表元素的最小宽度，元素会被内容撑开
-+ 在元素设置宽度是，设置的宽度是元素宽度的上限。
-  - width: 200px, flex-basis: 100px, 元素最小宽度是100px，最多增长到200px;
-  - width: 200px, flex-basis: 300px, 元素还是200px;
 
-如果 item 只设置了flex-basis，但是没有
+#### flex-basis
+
+默认值是 auto
+
+- 在元素没有设置宽度的时候，flex-basis 代表元素的最小宽度，元素会被内容撑开
+- 在元素设置宽度是，设置的宽度是元素宽度的上限。
+  - width: 200px, flex-basis: 100px, 元素最小宽度是 100px，最多增长到 200px;
+  - width: 200px, flex-basis: 300px, 元素还是 200px;
+
+如果 item 只设置了 flex-basis，但是没有
 
 ### transition
-复合属性，可以这样写：width 2s, height 1s, 
+
+复合属性，可以这样写：width 2s, height 1s,
 或者 all 3s,
 
 #### transition-property
+
 用来监听到底要监听哪个属性的状态改变
-+ all: 监听所有具有动画改变的属性
-+ 填写特定的属性：width, herght ....
+
+- all: 监听所有具有动画改变的属性
+- 填写特定的属性：width, herght ....
 
 #### transiton-duration
+
 动画完成的时间
 
 #### transition-timing-function
+
 指定动画的运动状态
 
 #### transition-delay
+
 动画延迟多长时间执行
 
 #### cubic-bezier
+
 (x1, y1, x2, y2)
 用曲线表示一个运动状态
 起点 + 终点 + (n - 1)个控制点
-如果斜率小于0的话，方向是负的。
+如果斜率小于 0 的话，方向是负的。
 
 ### animation
 
 #### @keyframes
+
 关键帧容器
 可以两个关键帧作用到同一个容器上
+
 ```css
 div {
   /* 第一个属性值：关键帧名字，独一无二 */
@@ -597,30 +615,75 @@ div {
 }
 @keyframes colorChange {
   from {
-    background-color: red,
+    background-color: red;
   }
   60% {
-    background-color: green,
+    background-color: green;
   }
   to {
-    background-color: black,
+    background-color: black;
   }
 }
 ```
 
 #### animation-iteration-count
+
 动画执行次数
 一旦动画开始都算作一个完整动画，所以延迟只会在刚开始会执行。
 infinite | number
 默认值：1
 
 #### animation-direction
+
 关键帧执行方向
 从 0% -> 100% 或者 100% -> 0%
-有一个值是 alternate, 代表正着来一次，倒着来一次，所以关键帧执行次数，必须大于等于2
+有一个值是 alternate, 代表正着来一次，倒着来一次，所以关键帧执行次数，必须大于等于 2
 
 #### animation-fill-mode
+
 default value: none : 原始状态，不是 第一帧(0%)， 也不是最后一帧(100%)
-+ both: 设置对象状态为结束或者开始时的状态 动画开始时是第一帧(0%)，结束后是最后一帧(100%)
-+ backwards: 设置对象状态为开始时的状态, 也就是第一帧的状态(0%)
-+ forwards: 设置对象状态为结束时的状态, 也就是最后一帧的状态(100%)
+
+- both: 设置对象状态为结束或者开始时的状态 动画开始时是第一帧(0%)，结束后是最后一帧(100%)
+- backwards: 设置对象状态为开始时的状态, 也就是第一帧的状态(0%)
+- forwards: 设置对象状态为结束时的状态, 也就是最后一帧的状态(100%)
+
+#### animation-timing-function
+
+- step
+
+```css
+* {
+  margin: 0;
+  padding: 0;
+}
+
+@keyframes change-color {
+  0% {
+    background-color: red;
+  }
+  25% {
+    background-color: green;
+  }
+  50% {
+    background-color: aqua;
+  }
+  75% {
+    background-color: antiquewhite;
+  }
+  100% {
+    background-color: yellowgreen;
+  }
+}
+
+div {
+  height: 100px;
+  width: 100px;
+  background-color: red;
+  /* steps 的步数，是从一帧跳到另一帧需要多少步来实现 */
+  /* start：丢的是第一帧，保留下一帧状态，直到这段动画结束 */
+  /* end：丢的是最后一帧，保留当前帧状态，知道这段动画时间结束 */
+  /* steps(1, end) === step-end */
+  /* steps(1, start) === step-start */
+  animation: change-color 4s steps(1, end) forwards;
+}
+```
