@@ -71,7 +71,7 @@ a img, 这俩标签默认是可拖拽的
       var oDragDiv = document.getElementsByClassName("a")[0];
       // 拖拽开始 按下的一瞬间是不会触发事件的
       oDragDiv.ondragstart = function (e) {
-				e.dataTransfer.effectAllowed = 鼠标样式
+    e.dataTransfer.effectAllowed = 鼠标样式
         console.log(e);
       };
       // 移动事件
@@ -149,8 +149,8 @@ a img, 这俩标签默认是可拖拽的
 
     // lineWidth 其实写到哪都相当于写道moveTo的后面
     ctx.lineWidth = 10;
-		// 最好在每次开始之前都加一个 beginPath
-		ctx.beginPath();
+    // 最好在每次开始之前都加一个 beginPath
+    ctx.beginPath();
     // 起点，任何图形的起点，都是moveTo
     ctx.moveTo(100, 100);
     // 路径终点
@@ -232,7 +232,7 @@ a img, 这俩标签默认是可拖拽的
 </body>
 ```
 
-#### ctx.strokeRect(x, y, width, height);
+#### ctx.strokeRect(x, y, width, height)
 
 ```html
 <body>
@@ -247,7 +247,7 @@ a img, 这俩标签默认是可拖拽的
 </body>
 ```
 
-#### ctx.clearRect(0, 0, 500, 300);
+#### ctx.clearRect(0, 0, 500, 300)
 
 清除之前动画的清除范围
 
@@ -315,3 +315,93 @@ ctx.arc + ctx.lineTo + ctx.closePath 一起使用
 ```
 
 ### 贝塞尔曲线
+
+#### 二次 quadraticCurveTo(x2, y2, x3, y3)
+
+moveTo 定第一个点的位置
+
+```html
+<body>
+  <canvas id="can" width="500px" height="300px"></canvas>
+
+  <script>
+    var canvas = document.getElementById("can");
+    var ctx = canvas.getContext("2d");
+
+    ctx.beginPath();
+    // moveTo(x1, y1);
+    ctx.moveTo(100, 100);
+    // quadraticCurveTo(x2, y2, x3, y3);
+    ctx.quadraticCurveTo(200, 200, 300, 100);
+    ctx.stroke();
+  </script>
+</body>
+```
+
+#### 三次 bezierCurveTo(x2, y2, x3, y3, x4, y4)
+
+```html
+<body>
+  <canvas id="can" width="500px" height="300px"></canvas>
+
+  <script>
+    var canvas = document.getElementById("can");
+    var ctx = canvas.getContext("2d");
+
+    ctx.beginPath();
+    // moveTo(x1, y1);
+    ctx.moveTo(100, 100);
+    ctx.bezierCurveTo(200, 200, 300, 100, 400, 200);
+    ctx.stroke();
+  </script>
+</body>
+```
+
+### translate rotate
+
+```html
+  <body>
+    <canvas id="can" width="500px" height="300px"></canvas>
+
+    <script>
+      var can = document.getElementById("can");
+      var ctx = can.getContext("2d");
+
+      ctx.beginPath();
+
+      // 移动画布的坐标中心
+      // 注意是画布的坐标中心移动，但是画布的位置不会移动
+      ctx.translate(100, 100);
+      // rotate 的旋转中心是画布的顶点，也就是画布的坐标中心
+      ctx.rotate(Math.PI / 6);
+      ctx.moveTo(0, 0);
+      ctx.lineTo(100, 100);
+      ctx.stroke();
+
+    </script>
+  </body>
+```
+
+### scale
+
+```html
+  <body>
+    <canvas id="can" width="1000px" height="1000px"></canvas>
+
+    <script>
+      var can = document.getElementById("can");
+      var ctx = can.getContext("2d");
+
+      // ctx.beginPath();
+      ctx.scale(1, 2);
+
+      // 相当于：100 * 1, 100 * 2, 100 * 1, 100 * 2
+      ctx.strokeRect(100, 100, 100, 100);
+
+      ctx.scale(2, 1);
+      // scale 会叠加
+      // 相当于：300 * 2, 300 * 2, 100 * 2, 100 * 2
+      ctx.strokeRect(300, 300, 100, 100);
+    </script>
+  </body>
+```
