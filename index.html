@@ -7,57 +7,34 @@
     <title>Document</title>
     <link rel="stylesheet" href="./index.css" />
     <style>
-      .a {
-        position: absolute;
-        width: 100px;
-        height: 100px;
-        background-color: antiquewhite;
-      }
-      .target {
-        position: absolute;
-        width: 200px;
-        height: 200px;
-        left: 300px;
-        top: 0;
+      #can {
         border: 1px solid;
       }
     </style>
   </head>
   <body>
-    <div class="a" draggable="true"></div>
-    <div class="target"></div>
-    <script>
-      var oDragDiv = document.getElementsByClassName("a")[0];
-      // 拖拽开始 按下的一瞬间是不会触发事件的
-      // oDragDiv.ondragstart = function (e) {
-      //   console.log(e);
-      // };
-      // // 移动事件
-      // oDragDiv.ondrag = function (e) {
-      //   console.log(e);
-      // };
-      // // 拖拽结束
-      // oDragDiv.ondragend = function (e) {
-      //   console.log(e);
-      // };
+    <canvas id="can" width="500px" height="300px"></canvas>
 
-      var target = document.getElementsByClassName('target')[0];
-      // ondragenter 不是元素图形进入就出触发的，是鼠标进入目标范围才触发的
-      target.ondragenter = function (e) {
-        // console.log(e);
-      }
-      // 鼠标一旦进入目标区域就一直触发
-      target.ondragover = function (e) {
-        // console.log(e);
-        e.preventDefault();
-      }
-      // 鼠标离开才会触发
-      target.ondragleave = function (e) {
-        // console.log(e);
-      }
-      target.ondrop = function (e) {
-        console.log('drop');
-      }
+    <script>
+      var canvas = document.getElementById("can");
+      var ctx = canvas.getContext("2d");
+
+      ctx.moveTo(100, 100);
+      ctx.lineWidth = 10;
+      ctx.lineTo(200, 200);
+      ctx.stroke();
+      ctx.beginPath();
+      // 新起的路径也要写起始点
+      ctx.moveTo(200, 200);
+      ctx.lineWidth = 5;
+      ctx.lineTo(200, 300);
+      // 一定要写stroke
+      ctx.stroke();
+      // 这个时候写 closePath 就不会生效了。
+      // 因为 closePath 是针对同一个path
+      // 但是现在相当于两个path
+      // 第二条 path 只有一条线，也没法闭合，除非第二个path有最少两笔
+      ctx.closePath();
     </script>
   </body>
 </html>
