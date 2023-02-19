@@ -19,22 +19,12 @@
       var canvas = document.getElementById("can");
       var ctx = canvas.getContext("2d");
 
-      ctx.moveTo(100, 100);
-      ctx.lineWidth = 10;
-      ctx.lineTo(200, 200);
-      ctx.stroke();
-      ctx.beginPath();
-      // 新起的路径也要写起始点
-      ctx.moveTo(200, 200);
-      ctx.lineWidth = 5;
-      ctx.lineTo(200, 300);
-      // 一定要写stroke
-      ctx.stroke();
-      // 这个时候写 closePath 就不会生效了。
-      // 因为 closePath 是针对同一个path
-      // 但是现在相当于两个path
-      // 第二条 path 只有一条线，也没法闭合，除非第二个path有最少两笔
-      ctx.closePath();
+      var height = 100;
+      var timer = setInterval(() => {
+        ctx.clearRect(0, 0, 500, 300);
+        ctx.fillRect(100, height, 50, 50);
+        height += 5;
+      }, 1000 / 30);
     </script>
   </body>
 </html>

@@ -193,5 +193,76 @@ a img, 这俩标签默认是可拖拽的
     ctx.closePath();
   </script>
 </body>
-s
+```
+
+### 画矩形
+
+#### ctx.rect(x, y, width, height)
+
+```html
+<body>
+  <canvas id="can" width="500px" height="300px"></canvas>
+
+  <script>
+    var canvas = document.getElementById("can");
+    var ctx = canvas.getContext("2d");
+
+    // 左上定点的位置，+ 宽高
+    ctx.rect(100, 100, 200, 100);
+    ctx.stroke();
+  </script>
+</body>
+```
+
+#### ctx.fillRect(x, y, width, height)
+
+```html
+<body>
+  <canvas id="can" width="500px" height="300px"></canvas>
+
+  <script>
+    var canvas = document.getElementById("can");
+    var ctx = canvas.getContext("2d");
+
+    // 不需要ctx.stroke();
+    ctx.fillRect(100, 100, 200, 100);
+  </script>
+</body>
+```
+
+### ctx.strokeRect(x, y, width, height);
+
+```html
+<body>
+  <canvas id="can" width="500px" height="300px"></canvas>
+
+  <script>
+    var canvas = document.getElementById("can");
+    var ctx = canvas.getContext("2d");
+
+    ctx.strokeRect(100, 100, 200, 100);
+  </script>
+</body>
+```
+
+### ctx.clearRect(0, 0, 500, 300);
+
+清除之前动画的清除范围
+
+```html
+<body>
+  <canvas id="can" width="500px" height="300px"></canvas>
+
+  <script>
+    var canvas = document.getElementById("can");
+    var ctx = canvas.getContext("2d");
+
+    var height = 100;
+    var timer = setInterval(() => {
+      ctx.clearRect(0, 0, 500, 300);
+      ctx.fillRect(100, height, 50, 50);
+      height += 5;
+    }, 1000 / 30);
+  </script>
+</body>
 ```
