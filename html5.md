@@ -149,6 +149,8 @@ a img, 这俩标签默认是可拖拽的
 
     // lineWidth 其实写到哪都相当于写道moveTo的后面
     ctx.lineWidth = 10;
+		// 最好在每次开始之前都加一个 beginPath
+		ctx.beginPath();
     // 起点，任何图形的起点，都是moveTo
     ctx.moveTo(100, 100);
     // 路径终点
@@ -230,7 +232,7 @@ a img, 这俩标签默认是可拖拽的
 </body>
 ```
 
-### ctx.strokeRect(x, y, width, height);
+#### ctx.strokeRect(x, y, width, height);
 
 ```html
 <body>
@@ -245,7 +247,7 @@ a img, 这俩标签默认是可拖拽的
 </body>
 ```
 
-### ctx.clearRect(0, 0, 500, 300);
+#### ctx.clearRect(0, 0, 500, 300);
 
 清除之前动画的清除范围
 
@@ -266,3 +268,50 @@ a img, 这俩标签默认是可拖拽的
   </script>
 </body>
 ```
+
+### 画圆
+
+#### 饼图
+
+ctx.arc + ctx.lineTo + ctx.closePath 一起使用
+
+```html
+<body>
+  <canvas id="can" width="500px" height="300px"></canvas>
+
+  <script>
+    var canvas = document.getElementById("can");
+    var ctx = canvas.getContext("2d");
+
+    // 圆心(x, y)，半径(r)，弧度(起始弧度，结束弧度)，方向(顺时针，逆时针)
+    ctx.arc(100, 100, 50, 0, Math.PI / 2, 1);
+    ctx.lineTo(100, 100);
+    ctx.closePath();
+    ctx.stroke();
+  </script>
+</body>
+```
+
+#### 圆角矩形
+
+```html
+<body>
+  <canvas id="can" width="500px" height="300px"></canvas>
+
+  <script>
+    var canvas = document.getElementById("can");
+    var ctx = canvas.getContext("2d");
+
+    // B(x, y), C(x y) ,半径
+
+    ctx.moveTo(100, 110);
+    ctx.arcTo(100, 200, 200, 200, 10);
+    ctx.arcTo(200, 200, 200, 100, 10);
+    ctx.arcTo(200, 100, 100, 100, 10);
+    ctx.arcTo(100, 100, 100, 200, 10);
+    ctx.stroke();
+  </script>
+</body>
+```
+
+### 贝塞尔曲线
