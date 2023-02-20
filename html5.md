@@ -538,3 +538,21 @@ moveTo 定第一个点的位置
 起始圆， 结束圆
 
 两个圆的位置不同，战术出来的效果不同
+
+### ctx.shadow
+
+```html
+  <body>
+    <canvas id="can" width="1000px" height="1000px"></canvas>
+    <script>
+      var can = document.getElementById("can");
+      var ctx = can.getContext("2d");
+
+      ctx.shadowColor = "blue";
+      ctx.shadowBlur = "10";
+      ctx.shadowOffsetX = '10';
+      ctx.shadowOffsetY = '10';
+      ctx.strokeRect(0, 0, 300, 300);
+    </script>
+  </body>
+```
