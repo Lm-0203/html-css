@@ -556,3 +556,22 @@ moveTo 定第一个点的位置
     </script>
   </body>
 ```
+
+### 文字
+
+```html
+  <body>
+    <canvas id="can" width="1000px" height="1000px"></canvas>
+    <script>
+      var can = document.getElementById("can");
+      var ctx = can.getContext("2d");
+      ctx.font = '100px 宋体';
+
+      // 文字描边，空心字
+      ctx.strokeText('landa', 100, 100);
+
+      // 文字填充
+      ctx.fillText('moket', 200, 300);
+    </script>
+  </body>
+```

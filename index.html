@@ -17,12 +17,13 @@
     <script>
       var can = document.getElementById("can");
       var ctx = can.getContext("2d");
+      ctx.font = '100px 宋体';
 
-      ctx.shadowColor = "blue";
-      ctx.shadowBlur = "10";
-      ctx.shadowOffsetX = '10';
-      ctx.shadowOffsetY = '10';
-      ctx.strokeRect(0, 0, 300, 300);
+      // 文字描边，空心字
+      ctx.strokeText('landa', 100, 100);
+
+      // 文字填充
+      ctx.fillText('moket', 200, 300);
     </script>
   </body>
 </html>
