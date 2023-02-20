@@ -532,3 +532,9 @@ moveTo 定第一个点的位置
     </script>
   </body>
 ```
+
+### ctx.createRadialGradient(x1, y1, r1, x2, y2, r2)
+
+起始圆， 结束圆
+
+两个圆的位置不同，战术出来的效果不同

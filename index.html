@@ -18,6 +18,12 @@
       var can = document.getElementById("can");
       var ctx = can.getContext("2d");
 
+      const bg = ctx.createRadialGradient(0, 0, 10, 0, 0, 20);
+      bg.addColorStop(0, 'lightblue');
+      bg.addColorStop(.5, 'lightgreen');
+      bg.addColorStop(1, '#abc');
+      ctx.fillStyle = bg;
+      ctx.fillRect(0, 0, 300, 300);
     </script>
   </body>
 </html>
