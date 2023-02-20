@@ -411,6 +411,7 @@ moveTo 定第一个点的位置
 ```
 
 ### save restore
+
 可以保存坐标系的平移数据，缩放数据，旋转数据
 
 ```html
@@ -436,6 +437,74 @@ moveTo 定第一个点的位置
       // scale 会叠乘
       // 相当于：300 * 1, 300 * 1, 100 * 1, 100 * 1
       ctx.strokeRect(300, 300, 100, 100);
+    </script>
+  </body>
+```
+
+### fillStyle
+
+背景填充：可以填充颜色，也可以填充图片
+
+#### 填充颜色
+
+```html
+  <body>
+    <canvas id="can" width="1000px" height="1000px"></canvas>
+
+    <script>
+      var can = document.getElementById("can");
+      var ctx = can.getContext("2d");
+      
+      ctx.fillStyle = 'blue';
+      ctx.fillRect(100, 100, 200, 100);
+    </script>
+  </body>
+```
+
+#### 填充图片 createPattern
+
+纹理的填充，是从画布坐标系原点开始填充的
+
+可以通过改变坐标系原点的位置，让图片从自己想要的位置，开始填充
+
+```html
+  <body>
+    <canvas id="can" width="1000px" height="1000px"></canvas>
+    <script>
+      var can = document.getElementById("can");
+      var ctx = can.getContext("2d");
+
+      var img = new Image();
+      img.src = "./images/cat.jpeg";
+
+      img.onload = function () {
+        ctx.beginPath();
+        const bg = ctx.createPattern(img, "no-repeat");
+        ctx.fillStyle = bg;
+        ctx.
+        ctx.fillRect(0, 0, 200, 100);
+      };
+    </script>
+  </body>
+```
+
+```html
+  <body>
+    <canvas id="can" width="1000px" height="1000px"></canvas>
+    <script>
+      var can = document.getElementById("can");
+      var ctx = can.getContext("2d");
+
+      var img = new Image();
+      img.src = "./images/cat.jpeg";
+
+      img.onload = function () {
+        ctx.beginPath();
+        const bg = ctx.createPattern(img, "no-repeat");
+        ctx.fillStyle = bg;
+        ctx.translate(100, 100);
+        ctx.fillRect(0, 0, 400, 400);
+      };
     </script>
   </body>
 ```

@@ -14,23 +14,20 @@
   </head>
   <body>
     <canvas id="can" width="1000px" height="1000px"></canvas>
-
     <script>
       var can = document.getElementById("can");
       var ctx = can.getContext("2d");
-      ctx.save();
-      ctx.beginPath();
-      ctx.scale(1, 2);
 
-      // 相当于：100 * 1, 100 * 2, 100 * 1, 100 * 2
-      ctx.strokeRect(100, 100, 100, 100);
+      var img = new Image();
+      img.src = "./images/cat.jpeg";
 
-      ctx.beginPath();
-      ctx.restore();
-      ctx.scale(1, 1);
-      // scale 会叠乘
-      // 相当于：300 * 1, 300 * 1, 100 * 1, 100 * 1
-      ctx.strokeRect(300, 300, 100, 100);
+      img.onload = function () {
+        ctx.beginPath();
+        const bg = ctx.createPattern(img, "no-repeat");
+        ctx.fillStyle = bg;
+        ctx.translate(100, 100);
+        ctx.fillRect(0, 0, 400, 400);
+      };
     </script>
   </body>
 </html>
