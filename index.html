@@ -17,13 +17,19 @@
     <script>
       var can = document.getElementById("can");
       var ctx = can.getContext("2d");
-      ctx.font = '100px 宋体';
+      ctx.beginPath();
 
-      // 文字描边，空心字
-      ctx.strokeText('landa', 100, 100);
+      ctx.moveTo(100, 100);
+      ctx.lineTo(200, 200);
+      ctx.lineWidth = 15;
+      ctx.lineCap = "round"; // butt, square, round, 
 
-      // 文字填充
-      ctx.fillText('moket', 200, 300);
+      ctx.lineTo(200, 100);
+      // 两条线相交的样式
+      ctx.lineJoin = "bevel"; // round bevel miter
+      // 防止过分尖锐
+      ctx.moterLimit = 5;
+      ctx.stroke();
     </script>
   </body>
 </html>

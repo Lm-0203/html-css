@@ -575,3 +575,28 @@ moveTo 定第一个点的位置
     </script>
   </body>
 ```
+
+### 线端样式 lineCap
+
+```html
+  <body>
+    <canvas id="can" width="1000px" height="1000px"></canvas>
+    <script>
+      var can = document.getElementById("can");
+      var ctx = can.getContext("2d");
+      ctx.beginPath();
+
+      ctx.moveTo(100, 100);
+      ctx.lineTo(200, 200);
+      ctx.lineWidth = 15;
+      ctx.lineCap = "round"; // butt, square, round, 
+
+      ctx.lineTo(200, 100);
+      // 两条线相交的样式
+      ctx.lineJoin = "bevel"; // round bevel miter
+      // 防止过分尖锐
+      ctx.moterLimit = 5;
+      ctx.stroke();
+    </script>
+  </body>
+```
