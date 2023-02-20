@@ -359,6 +359,8 @@ moveTo 定第一个点的位置
 
 ### translate rotate
 
+对全局起作用
+
 ```html
   <body>
     <canvas id="can" width="500px" height="300px"></canvas>
@@ -384,6 +386,8 @@ moveTo 定第一个点的位置
 
 ### scale
 
+对全局起作用
+
 ```html
   <body>
     <canvas id="can" width="1000px" height="1000px"></canvas>
@@ -399,8 +403,38 @@ moveTo 定第一个点的位置
       ctx.strokeRect(100, 100, 100, 100);
 
       ctx.scale(2, 1);
-      // scale 会叠加
+      // scale 会叠乘
       // 相当于：300 * 2, 300 * 2, 100 * 2, 100 * 2
+      ctx.strokeRect(300, 300, 100, 100);
+    </script>
+  </body>
+```
+
+### save restore
+可以保存坐标系的平移数据，缩放数据，旋转数据
+
+```html
+  <body>
+    <canvas id="can" width="1000px" height="1000px"></canvas>
+
+    <script>
+      var can = document.getElementById("can");
+      var ctx = can.getContext("2d");
+      // 在坐标轴变换之前先 save，保留画布变换之前的值
+      ctx.save();
+      ctx.beginPath();
+      ctx.scale(1, 2);
+
+      // 相当于：100 * 1, 100 * 2, 100 * 1, 100 * 2
+      ctx.strokeRect(100, 100, 100, 100);
+
+      ctx.beginPath();
+
+      // 拿出画布变换之前的值
+      ctx.restore();
+      ctx.scale(1, 1);
+      // scale 会叠乘
+      // 相当于：300 * 1, 300 * 1, 100 * 1, 100 * 1
       ctx.strokeRect(300, 300, 100, 100);
     </script>
   </body>

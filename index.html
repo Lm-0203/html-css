@@ -18,16 +18,18 @@
     <script>
       var can = document.getElementById("can");
       var ctx = can.getContext("2d");
-
-      // ctx.beginPath();
+      ctx.save();
+      ctx.beginPath();
       ctx.scale(1, 2);
 
       // 相当于：100 * 1, 100 * 2, 100 * 1, 100 * 2
       ctx.strokeRect(100, 100, 100, 100);
 
-      ctx.scale(2, 1);
-      // scale 会叠加
-      // 相当于：300 * 2, 300 * 2, 100 * 2, 100 * 2
+      ctx.beginPath();
+      ctx.restore();
+      ctx.scale(1, 1);
+      // scale 会叠乘
+      // 相当于：300 * 1, 300 * 1, 100 * 1, 100 * 1
       ctx.strokeRect(300, 300, 100, 100);
     </script>
   </body>
