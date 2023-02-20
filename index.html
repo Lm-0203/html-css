@@ -18,16 +18,6 @@
       var can = document.getElementById("can");
       var ctx = can.getContext("2d");
 
-      var img = new Image();
-      img.src = "./images/cat.jpeg";
-
-      img.onload = function () {
-        ctx.beginPath();
-        const bg = ctx.createPattern(img, "no-repeat");
-        ctx.fillStyle = bg;
-        ctx.translate(100, 100);
-        ctx.fillRect(0, 0, 400, 400);
-      };
     </script>
   </body>
 </html>

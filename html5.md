@@ -508,3 +508,27 @@ moveTo 定第一个点的位置
     </script>
   </body>
 ```
+
+### ctx.createLinearGradient(x1, y1, x2, y2)
+
+线性渐变的起点也在画布坐标系的原点位置
+
+```html
+  <body>
+    <canvas id="can" width="1000px" height="1000px"></canvas>
+    <script>
+      var can = document.getElementById("can");
+      var ctx = can.getContext("2d");
+
+      ctx.beginPath();
+      // 渐变范围的大小
+      const bg = ctx.createLinearGradient(0, 0, 100, 100);
+      // 第一个参数只能是0 - 1
+      bg.addColorStop(0, 'white');
+      bg.addColorStop(.5, 'green');
+      bg.addColorStop(1, 'black');
+      ctx.fillStyle = bg;
+      ctx.fillRect(0, 0, 300, 300);
+    </script>
+  </body>
+```
