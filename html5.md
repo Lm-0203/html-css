@@ -600,3 +600,190 @@ moveTo 定第一个点的位置
     </script>
   </body>
 ```
+
+## SVG
+
+svg: 矢量图，放大不会失真，适合大面积的贴图，通常动画较少，图形较简单，用标签和css画
+canvas: 适合用于小面积的绘图，适合动画（js 操作，方便计算）
+
+### line
+
+```html
+  <style>
+    line {
+      stroke: black;
+    }
+    /* 像圆，椭圆，可以用这种方法调节样式 */
+    polyline {
+      /* 改变填充的颜色 */
+      fill: transparent;
+      /* 边框的样式 */
+      stroke: lightblue;
+      /* 边线的宽 */
+      stroke-width: 3px;
+    }
+  </style>
+  <body>
+    <svg width="300" height="500" style="border: 1px solid" >
+      <line x1="100" y1="100" x2="200" y2="200" ></line>
+    </svg>
+  </body>
+```
+
+### rect
+
+```html
+  <style>
+    /* 像圆，椭圆，可以用这种方法调节样式 */
+    rect {
+      /* 改变填充的颜色 */
+      fill: transparent;
+      /* 边框的样式 */
+      stroke: lightblue;
+      /* 边线的宽 */
+      stroke-width: 3px;
+    }
+  </style>
+  <body>
+    <svg width="300" height="500" style="border: 1px solid" >
+      <!-- rx 是圆角 矩形会自动填充 -->
+      <rect width="100" height="20" x="10" y="10" rx="10" />
+    </svg>
+  </body>
+```
+
+### circle
+
+```html
+  <style>
+    /* 像圆，椭圆，可以用这种方法调节样式 */
+    circle {
+      /* 改变填充的颜色 */
+      fill: transparent;
+      /* 边框的样式 */
+      stroke: lightblue;
+      /* 边线的宽 */
+      stroke-width: 3px;
+    }
+  </style>
+  <body>
+    <svg width="300" height="500" style="border: 1px solid" >
+      <!-- r: 半径，cx：圆心到x轴的距离，cy：圆心到y轴的距离 -->
+      <circle r="50" cx="100" cy="100" />
+    </svg>
+  </body>
+```
+
+### ellipse
+
+```html
+  <style>
+    /* 像圆，椭圆，可以用这种方法调节样式 */
+    ellipse {
+      /* 改变填充的颜色 */
+      fill: transparent;
+      /* 边框的样式 */
+      stroke: lightblue;
+      /* 边线的宽 */
+      stroke-width: 3px;
+    }
+  </style>
+  <body>
+    <svg width="300" height="500" style="border: 1px solid" >
+      <!-- rx: x轴半径，ry：y轴半径，cx：圆心到x轴的距离，cy：圆心到y轴的距离-->
+      <ellipse rx="100" ry="30" cx="200"  cy="100"></ellipse>
+    </svg>
+  </body>
+```
+
+### polyline
+
+```html
+  <style>
+    /* 像圆，椭圆，可以用这种方法调节样式 */
+    polyline {
+      /* 改变填充的颜色 */
+      fill: transparent;
+      /* 边框的样式 */
+      stroke: lightblue;
+      /* 边线的宽 */
+      stroke-width: 3px;
+    }
+  </style>
+  <body>
+    <svg width="300" height="500" style="border: 1px solid" >
+      <!-- 折线 -->
+      <polyline points="0 0, 50 50, 50 100, 100 100"></polyline>
+    </svg>
+  </body>
+```
+
+### polygon
+
+```html
+  <style>
+    /* 像圆，椭圆，可以用这种方法调节样式 */
+    polyline,
+    polygon {
+      /* 改变填充的颜色 */
+      fill: transparent;
+      /* 边框的样式 */
+      stroke: lightblue;
+      /* 边线的宽 */
+      stroke-width: 3px;
+    }
+  </style>
+  <body>
+    <svg width="300" height="500" style="border: 1px solid">
+      <polyline points="0 0, 50 50, 50 100, 100 100"></polyline>
+
+      <!-- 多边形 -->
+      <!-- 会自动把收尾相连，如果选择填充的话，效果和polyline 是一样的 -->
+      <polygon points="0 0, 50 50, 50 100, 100 100"></polygon>
+    </svg>
+  </body>
+```
+
+### text
+
+```html
+  <style>
+    /* 像圆，椭圆，可以用这种方法调节样式 */
+    text,
+    polyline,
+    polygon {
+      /* 改变填充的颜色 */
+      fill: transparent;
+      /* 边框的样式 */
+      stroke: lightblue;
+      /* 边线的宽 */
+      stroke-width: 3px;
+    }
+  </style>
+  <body>
+    <svg width="300" height="500" style="border: 1px solid">
+      <text x="100" y="100">abc</text>
+    </svg>
+  </body>
+```
+
+### 属性
+
+```css
+  polygon {
+    /* 改变填充的颜色 */
+    fill: transparent;
+    /* 填充的半透明 */
+    fill-opacity: .3;
+    /* 边框的样式，如果不设置边框样式，没有边框 */
+    stroke: lightblue;
+    /* 边框的半透明 */
+    stroke-opacity: .3;
+    /* 在原来长度的基础之上，额外加了一个长度 */
+    stroke-linecap: butt;
+    /* 两条线相交的地方 */
+    stroke-linejoin: bevel;
+    /* 边线的宽, 线加粗的时候，是一半一半的，一半在里，一半在外 */
+    stroke-width: 3px;
+  }
+```
