@@ -8,9 +8,7 @@
     <link rel="stylesheet" href="./index.css" />
     <style>
       /* 像圆，椭圆，可以用这种方法调节样式 */
-      polyline,
-      polygon {
-        /* 改变填充的颜色 */
+      path {
         fill: transparent;
         /* 边框的样式 */
         stroke: lightblue;
@@ -23,7 +21,11 @@
   </head>
   <body>
     <svg width="300" height="500" style="border: 1px solid">
-      <text x="100" y="100">abc</text>
+      <!-- M -> moveTo(100, 100) -->
+      <!-- H -> 水平移动到什么位置 -->
+      <!-- V -> 垂直移动到什么位置 -->
+      <!-- Z 代表闭合 -->
+      <path d="M 100 100 H 200 V 50 Z"></path>
     </svg>
   </body>
 </html>

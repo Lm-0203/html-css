@@ -767,6 +767,106 @@ canvas: 适合用于小面积的绘图，适合动画（js 操作，方便计算
   </body>
 ```
 
+### path
+
+连续运动
+
+```html
+<style>
+  /* 像圆，椭圆，可以用这种方法调节样式 */
+  path {
+    fill: transparent;
+    /* 边框的样式 */
+    stroke: lightblue;
+    /* 边线的宽 */
+    stroke-width: 3px;
+    stroke-linecap: butt;
+    stroke-linejoin: bevel;
+  }
+</style>
+<body>
+  <svg width="300" height="500" style="border: 1px solid">
+    <!-- 大写字母表示绝对位置，根据 svg 的坐标轴定位 -->
+    <!-- M -> moveTo(100, 100) -->
+    <!-- L -> lineTo(200, 200) -->
+    <!-- 小写表示相对位置，根据上一个点的坐标进行定位 -->
+    <path d="M 100 100 L 200 200 l 0 100"></path>
+  </svg>
+</body>
+```
+
+```html
+<style>
+  /* 像圆，椭圆，可以用这种方法调节样式 */
+  path {
+    fill: transparent;
+    /* 边框的样式 */
+    stroke: lightblue;
+    /* 边线的宽 */
+    stroke-width: 3px;
+    stroke-linecap: butt;
+    stroke-linejoin: bevel;
+  }
+</style>
+<body>
+  <svg width="300" height="500" style="border: 1px solid">
+    <!-- 大写字母表示绝对位置，根据 svg 的坐标轴定位 -->
+    <!-- M -> moveTo(100, 100) -->
+    <!-- L -> lineTo(200, 200) -->
+    <!-- 小写表示相对位置，根据上一个点的坐标进行定位 -->
+    <path d="M 100 100 L 200 200 l 0 100"></path>
+  </svg>
+</body>
+```
+
+```html
+<style>
+  /* 像圆，椭圆，可以用这种方法调节样式 */
+  path {
+    fill: transparent;
+    /* 边框的样式 */
+    stroke: lightblue;
+    /* 边线的宽 */
+    stroke-width: 3px;
+    stroke-linecap: butt;
+    stroke-linejoin: bevel;
+  }
+</style>
+<body>
+  <svg width="300" height="500" style="border: 1px solid">
+    <!-- 大写字母表示绝对位置，根据 svg 的坐标轴定位 -->
+    <!-- M -> moveTo(100, 100) -->
+    <!-- L -> lineTo(200, 200) -->
+    <!-- 小写表示相对位置，根据上一个点的坐标进行定位 -->
+    <path d="M 100 100 L 200 200 l 0 100"></path>
+  </svg>
+</body>
+```
+
+```html
+<style>
+  /* 像圆，椭圆，可以用这种方法调节样式 */
+  path {
+    fill: transparent;
+    /* 边框的样式 */
+    stroke: lightblue;
+    /* 边线的宽 */
+    stroke-width: 3px;
+    stroke-linecap: butt;
+    stroke-linejoin: bevel;
+  }
+</style>
+<body>
+  <svg width="300" height="500" style="border: 1px solid">
+    <!-- M -> moveTo(100, 100) -->
+    <!-- H -> 水平移动到什么位置 -->
+    <!-- V -> 垂直移动到什么位置 -->
+    <!-- Z 代表闭合 -->
+    <path d="M 100 100 H 200 V 50 Z"></path>
+  </svg>
+</body>
+```
+
 ### 属性
 
 ```css
