@@ -608,6 +608,8 @@ canvas: 适合用于小面积的绘图，适合动画（js 操作，方便计算
 
 ### line
 
+要写样式才可以显示出来
+
 ```html
   <style>
     line {
@@ -868,6 +870,60 @@ canvas: 适合用于小面积的绘图，适合动画（js 操作，方便计算
     <path d="M 100 100 A 100 50 0 0 1 100 300"></path>
   </svg>
 </body>
+```
+
+### linearGradient feGaussianBlur
+
+```html
+  <svg width="300" height="500" style="border: 1px solid">
+    <!-- 定义, 要写到 defs 标签里 -->
+    <defs>
+      <!-- 定义渐变 -->
+      <linearGradient id="bg1" x1="0" y1="0" x2="0" y2="100%">
+        <stop offset="0%" style="stop-color: rgb(255, 255, 0)"></stop>
+        <stop offset="100%" style="stop-color: rgb(255, 0, 0)"></stop>
+      </linearGradient>
+      <!-- 高斯滤镜 -->
+      <filter id="gaussian">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="20"></feGaussianBlur>
+      </filter>
+    </defs>
+    <rect
+      width="100"
+      height="100"
+      x="10"
+      y="10"
+      rx="5"
+      style="fill: url(#bg1); filter: url(#gaussian)"
+    ></rect>
+  </svg>
+```
+
+### 虚线
+
+```css
+  line {
+    stroke: lightblue;
+    stroke-width: 10px;
+    /* 可是当数组来用 */
+    /* 线段会按照数组的顺序 显示填充区域和空白区域的长度 */
+    stroke-dasharray: 10px 20px;
+    /* 虚线偏移，正值，向左偏移 */
+    stroke-dashoffset: 20px;
+  }
+```
+
+### viewBox 比例尺
+
+```html
+  <svg
+    width="300"
+    height="500"
+    style="border: 1px solid"
+    viewBox="0, 0, 150, 250"
+  >
+    <line x1="100" y1="100" x2="200" y2="200"></line>
+  </svg>
 ```
 
 ### 属性
