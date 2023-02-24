@@ -13,13 +13,10 @@
     </style>
   </head>
   <body>
-    <svg
-      width="300"
-      height="500"
-      style="border: 1px solid"
-      viewBox="0, 0, 150, 250"
-    >
-      <line x1="100" y1="100" x2="200" y2="200"></line>
-    </svg>
+    <script>
+      window.navigator.geolocation.getCurrentPosition((position) => {
+        console.log(position);
+      });
+    </script>
   </body>
 </html>

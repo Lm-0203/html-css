@@ -946,3 +946,24 @@ canvas: 适合用于小面积的绘图，适合动画（js 操作，方便计算
     stroke-width: 3px;
   }
 ```
+
+## 获取地理信息
+
+定位 GPS
+台式机几乎都没有GPS
+笔记本绝大多数都没有GPS
+智能手机大部分都有
+
+没有GPS的情况下，进行网络定位
+
+在 https 协议，和 file 协议 下可以获取
+回调函数执行需要时间
+可当前浏览器也有关系，比如用 谷歌浏览器，因为中国不能访问谷歌，所以获取不到地理信息位置
+
+```js
+  window.navigator.geolocation.getCurrentPosition((position) => {
+    console.log(position);
+  });
+```
+
+posotion 有当前网络的经纬度，
