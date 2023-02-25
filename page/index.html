@@ -7,7 +7,15 @@
     <title>Document</title>
 </head>
 <body>
-    hello
-    
+    <div class="main"></div>
+
+    <script>
+        // 手机里面有一个设备：陀螺仪
+        // 只有支持 陀螺仪 的设备，才支持体感
+        window.addEventListener('deviceorientation', function (event) {
+            console.log(event);
+        })
+    </script>
+
 </body>
 </html>

@@ -14,8 +14,20 @@
   </head>
   <body>
     <script>
-      window.navigator.geolocation.getCurrentPosition((position) => {
-        console.log(position);
+      // 手机里面有一个设备：陀螺仪
+      // 只有支持 陀螺仪 的设备，才支持体感
+      // 苹果设备的页面，只有在https协议的情况下，才能使用这些接口
+
+      window.addEventListener("deviceorientation", function (event) {
+        document.getElementById("main").innerHTML =
+          "alpha: " +
+          event.alpha +
+          ", " +
+          "beta: " +
+          event.beta +
+          ", " +
+          "gamma: " +
+          event.gamma;
       });
     </script>
   </body>
