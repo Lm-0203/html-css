@@ -978,6 +978,18 @@ posotion 有当前网络的经纬度，
   window.addEventListener("deviceorientation", function (event) {
     console.log(event);
   });
+
+  window.addEventListener("deviceorientation", function (event) {
+    document.getElementById("main").innerHTML =
+      "alpha: " +
+      event.alpha +
+      ", " +
+      "beta: " +
+      event.beta +
+      ", " +
+      "gamma: " +
+      event.gamma;
+  });
 ```
 
 ### event 属性
