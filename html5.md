@@ -1099,3 +1099,35 @@ posotion 有当前网络的经纬度，
     );
   };
 ```
+
+## localStorage + sessionStorage
+
+- cookie: 每次请求都有可能传送很多没用的东西到后端。存储的内容比较少，4k。
+
+- localStorage: 只能存储字符串, 适合长期存放在浏览器的，无论窗口打开还是关闭，都需要存储。 在发送请求时不会把数据带上，可以存放较多的内容，5M 左右。每一个域都有自己的localStorage。同协议，同端口，同端口称为一个域。
+- sessionStorage: 这次会话临时需要存储的变量，下次会话就没有用了。每一次窗口关闭的时候，sessionStorage 会自动清空。在发送请求时不会把数据带上
+
+```js
+  localStorage.name = "panda";
+
+  // 如果对象属性直接存，会调用对象的 toString 方法
+  localStorage.arr1 = [1, 2, 3]; // 1, 2, 3
+  localStorage.arr = JSON.stringify([1, 2, 4]);
+
+  // [object Object]
+  localStorage.obj1 = {
+    name: "cheng",
+    age: 12,
+  };
+
+  localStorage.obj = JSON.stringify({
+    name: "cheng",
+    age: 12,
+  });
+  console.log(JSON.parse(localStorage.obj));
+
+  // 另一种读写方法
+  localStorage.setItem('name', 'cheng');
+  localStorage.getItem('name');
+  localStorage.removeItem('name');
+```

@@ -20,27 +20,30 @@
   <body>
     <div class="main"></div>
     <script>
-      window.cancelAnimationFrame = function () {
-        return (
-          window.cancelAnimationFrame ||
-          window.webkitCancelAnimationFrame ||
-          window.mozCancelAnimationFrame ||
-          function (id) {
-            window.clearTimeout(id);
-          }
-        );
+      localStorage.name = "panda";
+
+      // 如果对象属性直接存，会调用对象的 toString 方法
+      localStorage.arr1 = [1, 2, 3]; // 1, 2, 3
+      localStorage.arr = JSON.stringify([1, 2, 4]);
+
+      // [object Object]
+      localStorage.obj1 = {
+        name: "cheng",
+        age: 12,
       };
 
-      window.requestAnimationFrame = function () {
-        return (
-          window.requestAnimationFrame ||
-          window.webkitRequestAnimationFrame ||
-          window.mozRequestAnimationFrame ||
-          function (id) {
-            window.setTimeout(id, 1000 / 60);
-          }
-        );
-      };
+      localStorage.obj = JSON.stringify({
+        name: "cheng",
+        age: 12,
+      });
+
+      console.log(JSON.parse(localStorage.obj));
+
+      // 另一种读写方法
+      localStorage.setItem('name', 'cheng');
+      localStorage.getItem('name');
+      localStorage.removeItem('name');
+
     </script>
   </body>
 </html>
