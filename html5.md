@@ -988,7 +988,7 @@ posotion 有当前网络的经纬度，
       event.beta +
       ", " +
       "gamma: " +
-      event.gamma;
+      event.gamma; 
   });
 ```
 
@@ -1012,4 +1012,90 @@ posotion 有当前网络的经纬度，
 - window
   - 打开命令框，输入 ```ipconfig```。 如果连的是网线，看以太网适配器；如果用无线，看无线局域网适配器，IPv4地址。 有了ip地址还是访问不了，进入控制面板 -> 网络和internet -> 系统和安全 -> 防火墙 -> 该关的都关了
 
-3. 在手机上输入相应的ip和端口进行访问
+3. 在手机浏览器上输入相应的ip和端口进行访问
+
+## devicemotion
+
+```js
+  // 手机摇一摇
+  window.addEventListener("devicemotion", function (event) {
+    // 三个方向的加速度
+    document.getElementById("main").innerHTML =
+      event.acceleration.x +
+      ", " +
+      event.acceleration.y +
+      ", " +
+      event.acceleration.z;
+
+    if (
+      Math.abs(event.acceleration.x) > 9 ||
+      Math.abs(event.acceleration.y) > 9 ||
+      Math.abs(event.acceleration.z) > 9
+    ) {
+      console.log("在晃");
+    }
+  });
+```
+
+## requestAnimationFrame
+
+使用时要考虑兼容性
+
+屏幕刷新的频率: 每秒60次
+如果变化在一秒内超过60次，必然会有一些动画帧会被丢掉
+
+因为 requestAnimationFrame 是每秒 60 帧, 每一帧的执行时间要少于 1/60 帧。requestAnimationFrame 可以准时执行每一帧。但是 setInterval / setTimeout 会把整体的执行时间拉长。
+
+```js
+  var timer = null;
+  function move() {
+    var square = document.getElementsByClassName("main")[0];
+    if (square.offsetLeft > 700) {
+      cancelAnimationFrame(timer);
+      return;
+    }
+    console.log('square.style.left: ', square.style.left);
+    square.style.left = square.offsetLeft + 20 + "px";
+    timer = requestAnimationFrame(move);
+  }
+  move();
+```
+
+```js
+  function move() {
+    var square = document.getElementsByClassName("main")[0];
+    if (square.offsetLeft > 700) {
+      return;
+    }
+    square.style.left = square.offsetLeft + 20 + "px";
+    requestAnimationFrame(move);
+  }
+  // setInverval 有自己的执行队列，上一个任务执行完才会执行下一个，所以整体时间，60 帧执行完的整体时间，可能会大于1秒
+  setInterval(move, 1000 / 60);
+```
+
+### 处理兼容性
+
+```js
+  window.cancelAnimationFrame = function () {
+    return (
+      window.cancelAnimationFrame ||
+      window.webkitCancelAnimationFrame ||
+      window.mozCancelAnimationFrame ||
+      function (id) {
+        window.clearTimeout(id);
+      }
+    );
+  };
+
+  window.requestAnimationFrame = function () {
+    return (
+      window.requestAnimationFrame ||
+      window.webkitRequestAnimationFrame ||
+      window.mozRequestAnimationFrame ||
+      function (id) {
+        window.setTimeout(id, 1000 / 60);
+      }
+    );
+  };
+```
