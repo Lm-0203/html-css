@@ -1131,3 +1131,37 @@ posotion 有当前网络的经纬度，
   localStorage.getItem('name');
   localStorage.removeItem('name');
 ```
+
+## history
+
+为了网页的性能，大多都是单页面操作
+没听明白
+困了，不想听了
+
+## worker
+
+js 都是单线程的。
+worker 是多线程的，是真的多线程，不是伪多线程
+worker 不能操作dom，没有window对象，不能读取文件，可以发 ajax，可以计算
+
+```js
+  var a = 10000;
+  var result = 0;
+  // 创建worker对象。
+  // 在理论上可以在worker文件里面创建worker，但是没有一款浏览器支持
+  var worker = new Worker("./worker.js");
+  // worker 和主线程都是用 postMessage 发消息
+  worker.postMessage({ num: a });
+  for (var i = 0; i < a; i++) {
+    result += 1;
+  }
+  // 用 onmessage 接收消息
+  worker.onmessage = function (e) {
+    console.log(e.data);
+  };
+  console.log("=======");
+  console.log("=======");
+
+  // 结束worker
+  worker.terminate();
+```

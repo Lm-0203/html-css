@@ -20,30 +20,25 @@
   <body>
     <div class="main"></div>
     <script>
-      localStorage.name = "panda";
-
-      // 如果对象属性直接存，会调用对象的 toString 方法
-      localStorage.arr1 = [1, 2, 3]; // 1, 2, 3
-      localStorage.arr = JSON.stringify([1, 2, 4]);
-
-      // [object Object]
-      localStorage.obj1 = {
-        name: "cheng",
-        age: 12,
+      var a = 10000;
+      var result = 0;
+      // 创建worker对象。
+      // 在理论上可以在worker文件里面创建worker，但是没有一款浏览器支持
+      var worker = new Worker("./worker.js");
+      // worker 和主线程都是用 postMessage 发消息
+      worker.postMessage({ num: a });
+      for (var i = 0; i < a; i++) {
+        result += 1;
+      }
+      // 用 onmessage 接收消息
+      worker.onmessage = function (e) {
+        console.log(e.data);
       };
+      console.log("=======");
+      console.log("=======");
 
-      localStorage.obj = JSON.stringify({
-        name: "cheng",
-        age: 12,
-      });
-
-      console.log(JSON.parse(localStorage.obj));
-
-      // 另一种读写方法
-      localStorage.setItem('name', 'cheng');
-      localStorage.getItem('name');
-      localStorage.removeItem('name');
-
+      // 结束worker
+      worker.terminate();
     </script>
   </body>
 </html>
