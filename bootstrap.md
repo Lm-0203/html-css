@@ -229,4 +229,55 @@
   </div>
   ```
 
++ 垂直对齐
+  ```html
+  <div class="container">
+    <!-- 对齐 -->
+    <!-- 垂直对齐 -->
+    <!-- 行的对齐方式：align-items-start align-items-center align-items-end -->
+    <!-- 列的单独对齐方式：align-self-start align-self-center align-slef-end -->
 
+    <div class="row v-align align-items-start">
+      <div class="col">垂直对齐-align-items-start-行的对齐方式</div>
+      <div class="col">垂直对齐-align-items-start-行的对齐方式</div>
+      <div class="col">垂直对齐-align-items-start-行的对齐方式</div>
+    </div>
+    <div class="row v-align align-items-center">
+      <div class="col">垂直对齐-align-items-center-行的对齐方式</div>
+      <div class="col">垂直对齐-align-items-center-行的对齐方式</div>
+      <div class="col">垂直对齐-align-items-center-行的对齐方式</div>
+    </div>
+    <div class="row v-align align-items-end">
+      <div class="col">垂直对齐-align-items-end-行的对齐方式</div>
+      <div class="col">垂直对齐-align-items-end-行的对齐方式</div>
+      <div class="col">垂直对齐-align-items-end-行的对齐方式</div>
+    </div>
+
+    <div class="row v-align align-items-end">
+      <div class="col align-self-start">
+        垂直对齐-align-self-start-列的对齐方式
+      </div>
+      <div class="col align-self-center">
+        垂直对齐-align-self-center-列的对齐方式
+      </div>
+      <div class="col align-slef-end">
+        垂直对齐-align-slef-end-列的对齐方式
+      </div>
+    </div>
+  </div>
+  ```
+  ![result](images/align-items-align-self.jpg)
+
++ 水平对齐
+  + 就不演示了
+  + justify-content-start
+  + justify-content-center
+  + justify-content-end
+  + justify-content-around
+  + justify-content-between
+
++ order-{breadPoint}-*
+  + order-first 排在第一位
+  + order-last  排在最后一位
+  + 没听懂是怎么根据排的
+  + breadPoint 表示 满足对应的尺寸才会进行排序
