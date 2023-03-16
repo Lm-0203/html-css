@@ -20,36 +20,33 @@
         text-align: center;
         color: lightcoral;
       } */
-      .row {
-        background: rgba(255, 0, 0, 0.1);
-      }
-      .row div {
-        background: rgba(84, 37, 98, 0.15);
-        border: 1px solid rgba(84, 37, 98, 0.2);
-        color: #333;
+
+      div {
+        width: 100px;
+        height: 100px;
+        background-color: var(--blue);
       }
     </style>
   </head>
   <body>
-    <div class="container">
-      <!-- 嵌套：每一个列里面可以再继续放元素，嵌套在里面的元素会以父级的宽度为基准，再分12个列 -->
-      <div class="row">
-        <div class="col-sm-9">
-          <p>父级第一列</p>
-          <div class="row">
-            <div class="col-sm-8 col-6">
-              子级第一列，(≥576)下占8列，小于576下占6列
-            </div>
-            <div class="col-sm-4 col-6">
-              子级第二列，(≥576)下占4列，小于576下占6列
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <p>父级第二列</p>
-        </div>
-      </div>
-    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"

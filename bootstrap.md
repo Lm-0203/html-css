@@ -343,3 +343,25 @@
   ```
   ![result](images/bootstrap-test-2.jpg)
 
+# 重置
+针对 HTML 特定元素重置样式，以便 Bootstrap 能在各种浏览器下表现一直
+通过调用特定的类实现
+
+
+
+太细碎了
+
+```css
+/* css 中也是可以定义变量的 */
+:root {
+  --blue: #abc;
+}
+div {
+  width: 100px;
+  height: 100px;
+  background: var(--blue); /*用 --blue 这个变量 */
+}
+```
+
+
+
