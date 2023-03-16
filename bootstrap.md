@@ -127,7 +127,106 @@
   旧的浏览器不支持`@media`，当检测到`@media`中对元素设置样式时，无论条件是否匹配都会直接应用。所以用only避免这种情况
 
 
+# Grid
 
++ container-fluid: 默认width：100%
 
++ container: 根据不同的屏幕尺寸有不同的值
+
++ row
+
++ col-xl-1
+  + 后面的数字代表当前div占几列
+    + `<div class="col-xl-1">1</div>` 1就是占1列
+  + xl 响应层对应的简写
+    + Extra small (xs)
+    + Small (sm)
+    + Medium (md)
+    + Large (lg)
+    + Extra large (xl)
+    + Extra extra large (xxl)
+    ![result](images/grig-options.jpg)
+
++ col 所占列数是等分算
+  ```html
+  <div class="container">
+    <div class="row">
+      <div class="col"></div>
+      <div class="col"></div>
+      <div class="w-100"></div>
+      <div class="col"></div>
+      <div class="col"></div>
+    </div>
+    <div class="row mt-5">
+      <div class="col"></div>
+      <div class="col"></div>
+      <div class="col"></div>
+      <div class="col"></div>
+      <div class="col"></div>
+    </div>
+  </div>
+  ```
+  自己领悟吧！
+  ![result](images/grid-col.jpg)
+
+  ```html
+  <div class="container">
+    <!-- 设置一个固定列宽，剩下的自动平分 -->
+    <!-- 并且当 col-sm-7 占一列的时候，下面的两个col会自动换行，平分第二行-->
+    <div class="row">
+      <div class="col-sm-7">屏幕大于等于576，占7列,小于576全占</div>
+      <div class="col">自动平分剩余的宽度</div>
+      <div class="col">自动平分剩余的宽度</div>
+    </div>
+  </div>
+  ```
+  ![result](images/grid-col-use.png)
+
+  ```html
+  <div class="container">
+    <!-- 根据内容调整列的宽度 使用 .col-{breakpoint}-auto-->
+    <!-- breakpoint 是指 xs sm md ... -->
+    <div class="row">
+      <div class="col-md-auto">
+        <p>在中等屏幕下(>=768)，由内容撑开宽度</p>
+        <p>屏幕小于768的时候，会占满父级div</p>
+      </div>
+      <div class="col">自动平分剩余宽度</div>
+      <div class="col-lg-2">(>=992)时占两列</div>
+    </div>
+  </div>
+  ```
+  ![result](images/grid-breakpoint-auto.png)
+  ![result](images/grid-test-1.jpg)
+
+  ```html
+  <div class="container">
+    <!-- 所以要尺寸下，都是响应的列数 -->
+    <div class="row">
+      <div class="col-8">所有尺寸下，都占8列</div>
+      <div class="col-4">所有尺寸下，都占4列</div>
+    </div>
+  </div>
+  ```
+
+  ```html
+  <div class="container">
+    <!-- 混合排列 组合模式 -->
+    <!-- 1. 超大屏幕(>=1200)下一行显示6个div，一个div应该占2列 -->
+    <!-- 2. 大屏幕(>=992)下一行显示4个div，一个div应该占3列 -->
+    <!-- 3. 中等屏幕(>=768)下一行显示3个div，一个div应该占4列 -->
+    <!-- 4. 小屏幕(>=576)下一行显示2个div，一个div应该占6列 -->
+    <!-- 5. 超小屏幕(<576)下一行显示1个div，一个div应该占12列 -->
+
+    <div class="row">
+      <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12"></div>
+      <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12"></div>
+      <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12"></div>
+      <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12"></div>
+      <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12"></div>
+      <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12"></div>
+    </div>
+  </div>
+  ```
 
 

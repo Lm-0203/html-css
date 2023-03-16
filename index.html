@@ -12,26 +12,38 @@
       crossorigin="anonymous"
     />
     <style>
-      div {
-        padding: 50px 0;
-        border: 1px solid #008002;
+      .row div {
+        height: 50px;
+        background-color: lightblue;
+        border: 1px solid lightcoral;
+        box-sizing: border-box;
+        text-align: center;
+        color: lightcoral;
       }
-      div::after {
-        content: 'This is a house';
-      }
+      .v-align {
+        height: 100px;
+        background: rgba(255, 0, 0, .1);
+        margin: 10px -15px;
 
-      @media screen and (max-width: 1000px) {
-        div {
-          background-color: limegreen;
-        }
-        div::after {
-          content: 'So big house!';
-        }
+      }
+      .v-align div {
+        height: 40px;
+        line-height: 40px;
+        background: rgba(84, 37, 98, .15);
+        border: 1px solid rgba(84, 37, 98, .2);
+        color: #333;
       }
     </style>
   </head>
   <body>
-    <div></div>
+    <div class="container">
+      <!-- 对齐 -->
+      <!-- 垂直对齐 -->
+      <!-- 行的对齐方式：align-items-start align-items-center align-items-end -->
+      <!-- 列的单独对齐方式：align-self-start align-self-center align-slef-end -->
+
+    </div>
+
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
       integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
