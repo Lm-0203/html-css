@@ -20,14 +20,10 @@
         text-align: center;
         color: lightcoral;
       } */
-      .v-align {
-        height: 100px;
+      .row {
         background: rgba(255, 0, 0, 0.1);
-        margin: 10px -15px;
       }
       .row div {
-        height: 40px;
-        line-height: 40px;
         background: rgba(84, 37, 98, 0.15);
         border: 1px solid rgba(84, 37, 98, 0.2);
         color: #333;
@@ -36,16 +32,22 @@
   </head>
   <body>
     <div class="container">
-      <!-- 水平对齐 -->
-      <!-- justify-content-start -->
-      <!-- justify-content-center -->
-      <!-- justify-content-end -->
-      <!-- justify-content-around -->
-      <!-- justify-content-between -->
+      <!-- 嵌套：每一个列里面可以再继续放元素，嵌套在里面的元素会以父级的宽度为基准，再分12个列 -->
       <div class="row">
-        <div class="col-4">第1列</div>
-        <div class="col-4 order-first">第2列</div>
-        <div class="col-4">第3列</div>
+        <div class="col-sm-9">
+          <p>父级第一列</p>
+          <div class="row">
+            <div class="col-sm-8 col-6">
+              子级第一列，(≥576)下占8列，小于576下占6列
+            </div>
+            <div class="col-sm-4 col-6">
+              子级第二列，(≥576)下占4列，小于576下占6列
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <p>父级第二列</p>
+        </div>
       </div>
     </div>
 

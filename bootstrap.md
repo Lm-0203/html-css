@@ -281,3 +281,65 @@
   + order-last  排在最后一位
   + 没听懂是怎么根据排的
   + breadPoint 表示 满足对应的尺寸才会进行排序
+  
++ offset-{breadPoint}-*
+  ```html
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">第一列</div>
+      <div class="col-md-4 offset-md-4">往右偏移4列</div>
+    </div>
+
+    <div class="row">
+      <div class="col-3 offset-4">往右偏4列</div>
+      <div class="col-3">第二列</div>
+    </div>
+  </div>
+  ```
+  ![result](images/bootstrap-offset.jpg)
+
++ spacing
+  + ms-{breadPoint}-* 右侧的列远离到最右边，也就是在左边加margin
+  + me-{breadPoint}-* 左侧的列远离到最左边，也就是在右侧加margin
+  ```html
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">第一列</div>
+      <div class="col-md-5 ms-auto">第二列在最右边</div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-md-4 ms-auto">离左侧距离自动计算</div>
+      <div class="col-md-5 ms-auto">离左侧距离自动计算</div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-auto me-auto">宽度由内容撑开，离右边的距离自动计算</div>
+      <div class="col-auto">宽度由内容撑开</div>
+    </div>
+  </div>
+  ```
+  ![result](images/margin-auto.jpg)
+
++ 嵌套
+  ```html
+  <div class="container">
+    <!-- 嵌套：每一个列里面可以再继续放元素，嵌套在里面的元素会以父级的宽度为基准，再分12个列 -->
+    <div class="row">
+      <div class="col-sm-9">
+        <p>父级第一列</p>
+        <div class="row">
+          <div class="col-sm-8 col-6">
+            子级第一列，(≥576)下占8列，小于576下占6列
+          </div>
+          <div class="col-sm-4 col-6">
+            子级第二列，(≥576)下占4列，小于576下占6列
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <p>父级第二列</p>
+      </div>
+    </div>
+  </div>
+  ```
+  ![result](images/bootstrap-test-2.jpg)
+
