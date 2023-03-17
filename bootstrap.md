@@ -363,5 +363,18 @@ div {
 }
 ```
 
++ img-fluid
+  ```html
+  <img class="img-fluid" src="./images/cat.jpeg" alt="">
+  ```
+
+  ```css
+  /* img-fluid 是 boorstrap 的类名，这是它表示的属性值 */
+  .img-fluid {
+    max-width: 100%;
+    height: auto;
+  }
+  ```
+
 
 

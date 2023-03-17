@@ -11,42 +11,25 @@
       integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
       crossorigin="anonymous"
     />
-    <style>
-      /* .row div {
-        height: 50px;
-        background-color: lightblue;
-        border: 1px solid lightcoral;
-        box-sizing: border-box;
-        text-align: center;
-        color: lightcoral;
-      } */
-
-      div {
-        width: 100px;
-        height: 100px;
-        background-color: var(--blue);
-      }
-    </style>
+    <style></style>
   </head>
   <body>
+    <div class="">
+      <!-- <img class="img-fluid" src="./images/cat.jpeg" alt="" /> -->
+    </div>
 
+    <script>
+      const arr = [3];
 
+      const obj = {
+        0: 4,
+        1: 5,
+        length: 2,
+        [Symbol.isConcatSpreadable]: true,
+      };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      console.log(arr.concat(obj)); // [3, 4, 5];
+    </script>
 
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
