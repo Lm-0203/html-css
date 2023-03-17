@@ -376,5 +376,70 @@ div {
   }
   ```
 
+# Utilities
+
++ border
+  + border-top
+  + border-top-0
+  + border-right
+  + border-right-0
+  + border-bottom
+  + border-bottom-0
+  + border-left
+  + border-left-0
+  + border-0
+  + border-primary
+    + primary-subtle
+    + secondary
+    + 等等等
+    + 边框颜色要和变宽一起用
+    + 边框颜色只是提供一个颜色值，边框的宽还是0
+  + rounded
+    + rounded-top
+    + rounded-end
+    + rounded-bottom
+    + rounded-start
+    + rounded-circle // 圆
+    + rounded-pill // 椭圆
+    + rounded-0
+      + 1
+      + 2
+      + 3
+      + 4
+      + 5
+    + rounded-start-2 // 组合使用，要举一反三
+    + rounded-start-pill // 组合使用，要举一反三
+
++ text
+  + text-primary-emphasis
+    + 字体的各种色值
+
++ bg
+  + bg-primary
+  + 背景颜色的各种色值
+
++ display
+  + d-{value} for xs
+  + d-{breakpoint}-{value} for sm, md, lg, xl, and xxl.
+  
+  Display in print
+  + d-print-{value}
+  
+  value is one of
+  + none
+  + inline
+  + inline-block
+  + block
+  + grid
+  + table
+  + table-cell
+  + table-row
+  + flex
+  + inline-flex
+  
+  
+
+
+
 
 
