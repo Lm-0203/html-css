@@ -437,8 +437,10 @@ div {
   + flex
   + inline-flex
   
-  
-
++ text-hide 可以用于seo优化
++ text-lowercase // 全部小写
++ text-uppercase // 全部大写
++ text-capitalize // 首字母大写
 
 
 
