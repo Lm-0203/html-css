@@ -5,17 +5,77 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <style></style>
+    <style>
+      /* 定宽高 */
+      /* div {
+               position: absolute;
+               left: 50%;
+               top: 50%;
+               margin-left: -250px;
+               margin-top: -250px;
+               width: 500px;
+               height: 500px;
+               background: red;
+             } */
+
+      /* div {
+               position: absolute;
+               left: 50%;
+               top: 50%;
+               width: 50px;
+               height: 50px;
+               background: red;
+               z-index: 1;
+               transform: translate(-50%, -50%);
+             } */
+      /* 单行文本溢出 */
+      /* div {
+               overflow: hidden;
+               text-overflow: ellipsis;
+               white-space: nowrap;
+             } */
+
+      /* div {
+               display: -webkit-box;
+               -webkit-box-orient: vertical;
+               -webkit-line-clamp: 3;
+               overflow: hidden;
+               width: 100px;
+             } */
+      p {
+        position: relative;
+        line-height: 20px;
+        max-height: 40px;
+        overflow: hidden;
+        background-color: lightslategrey;
+        width: 200px;
+      }
+      .p2 {
+        background-color: lightpink;
+        position: sticky;
+        top: 0;
+      }
+      /* p::after {
+               content: "...";
+               position: absolute;
+               bottom: 0;
+               right: 0;
+               padding-left: 40px;
+               background: -webkit-linear-gradient(left, transparent, #fff 55%);
+               background: -o-linear-gradient(right, transparent, #fff 55%);
+               background: -moz-linear-gradient(right, transparent, #fff 55%);
+               background: linear-gradient(to right, transparent, #fff 55%);
+             } */
+      div {
+        width: 0;
+        height: 0;
+        border: 10px solid;
+        border-top-color: transparent;
+      }
+    </style>
   </head>
   <body>
-    <div class="container">
-      <img width="200px" src="./images/zelda.jpg" alt="" />
-      <div>
-        1
-      </div>
-      <div>
-        2
-      </div>
-    </div>
+    
   </body>
+  <script></script>
 </html>

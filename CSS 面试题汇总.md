@@ -14,7 +14,7 @@
 >
 > - 设置浮动
 > - *overflow* 设置为 *auto、scroll、hidden*
-> - *positon* 设置为 *absolute、fixed*
+> - *position* 设置为 *absolute、fixed*
 >
 > 常见的 *BFC* 应用有：
 >
@@ -96,13 +96,13 @@
 >  height: 500px;
 >  background: yellow;
 >  z-index: 1;
->  transform: translate3d(-50%,-50%,0);
+>  transform: translate(-50%, -50%);
 > }
 > ````
 >
 > **不定宽高**
 >
-> 不定宽高的方法基本都适用于定宽高的情况 这里把 *div* 的宽高按照内容展开，使用定位 + *transform* 同样是适用的
+> 定位 + *transform* 同样适用于定宽高的情况 这里把 *div* 的宽高按照内容撑开
 >
 > ```js
 > element.style {
@@ -111,7 +111,7 @@
 >  top: 50%;
 >  background: yellow;
 >  z-index: 1;
->  transform: translate3d(-50%,-50%,0);
+>  transform: translate(-50%, -50%);
 > }
 > ```
 
@@ -125,7 +125,11 @@
 >
 > - 继承： display: none和opacity: 0：是非继承属性，子孙节点消失由于元素从渲染树消失造成，通过修改子孙节点属性无法显示。 visibility: hidden：是继承属性，子孙节点消失由于继承了hidden，通过设置visibility: visible;可以让子孙节点显式。
 >
-> - 性能： displaynone : 修改元素会造成文档回流,读屏器不会读取display: none元素内容，性能消耗较大 visibility:hidden: 修改元素只会造成本元素的重绘,性能消耗较少读屏器读取visibility: hidden元素内容 opacity: 0 ： 修改元素会造成重绘，性能消耗较少
+> - 性能： display:none 修改元素会造成文档回流,读屏器不会读取display: none元素内容，性能消耗较大 visibility:hidden: 修改元素只会造成本元素的重绘,性能消耗较少读屏器读取visibility: hidden元素内容 opacity: 0 ： 修改元素会造成重绘，性能消耗较少
+>
+> 1. display: none (不占空间，不能点击)（场景，显示出原来这里不存在的结构）
+> 2. visibility: hidden（占据空间，不能点击）（场景：显示不会导致页面结构发生变动，不会撑开）
+> 3. opacity: 0（占据空间，可以点击）（场景：可以跟transition搭配）
 
 
 
@@ -172,15 +176,25 @@
 > overflow: hidden;
 > ```
 >
-> 兼容：
+> 兼容：p 标签行高20，最大高度40，也就是最多两行，after 的内容是 ... 说明是强行在文本末加一个 ... 无论有没有溢出
 >
 > ```css
-> p{position: relative; line-height: 20px; max-height: 40px;overflow: hidden;}
-> p::after{content: "..."; position: absolute; bottom: 0; right: 0; padding-left: 40px;
-> background: -webkit-linear-gradient(left, transparent, #fff 55%);
-> background: -o-linear-gradient(right, transparent, #fff 55%);
-> background: -moz-linear-gradient(right, transparent, #fff 55%);
-> background: linear-gradient(to right, transparent, #fff 55%);
+> p {
+>   position: relative;
+>   line-height: 20px; 
+>   max-height: 40px;
+>   overflow: hidden;
+> }
+> p::after {
+>   content: "..."; 
+>   position: absolute; 
+>   bottom: 0; 
+>   right: 0;       
+>   padding-left: 40px;
+>   background: -webkit-linear-gradient(left, transparent, #fff 55%);
+>   background: -o-linear-gradient(right, transparent, #fff 55%);
+>   background: -moz-linear-gradient(right, transparent, #fff 55%);
+>   background: linear-gradient(to right, transparent, #fff 55%);
 > }
 > ```
 >
@@ -196,13 +210,15 @@
 
 > 参考答案：
 >
-> transform 属于合成属性（composite property），对合成属性进行 transition/animation 动画将会创建一个合成层（composite layer），这使得被动画元素在一个独立的层中进行动画。通常情况下，浏览器会将一个层的内容先绘制进一个位图中，然后再作为纹理（texture）上传到 GPU，只要该层的内容不发生改变，就没必要进行重绘（repaint），浏览器会通过重新复合（recomposite）来形成一个新的帧。
+> transform 属于合成属性（composite property），对合成属性进行 transition/animation 动画将会创建一个合成层（composite layer），这使得被动画元素在一个独立的层中进行动画。通常情况下，浏览器会将一个层的内容先绘制进一个位图中，然后再作为纹理（texture）上传到 GPU，只要该层的内容不发生改变，就没必要进行重绘（repaint），浏览器会通过重新复合（re-composite）来形成一个新的帧。
 >
-> top/left属于布局属性，该属性的变化会导致重排（reflow/relayout），所谓重排即指对这些节点以及受这些节点影响的其它节点，进行CSS计算->布局->重绘过程，浏览器需要为整个层进行重绘并重新上传到 GPU，造成了极大的性能开销。
+> top/left属于布局属性，该属性的变化会导致重排（reflow/re-layout），所谓重排即指对这些节点以及受这些节点影响的其它节点，进行CSS计算->布局->重绘过程，浏览器需要为整个层进行重绘并重新上传到 GPU，造成了极大的性能开销。
 
 
 
 ### 9. 介绍下粘性布局（*sticky*）（网易）
+
+> 做吸顶效果的时候，可以用
 
 > 参考答案：
 >
@@ -225,6 +241,9 @@
 > 如图所示：
 >
 > <img src="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2021-11-03-010805.png" alt="image-20210816161354713" style="zoom:50%;" />
+>
+> justify-content: 
+> center; start; end; flex-start; flex-end; left; right; normal; space-between; space-around; space-evenly; stretch; safe center; unsafe center; inherit; initial; revert; revert-layer; unset;
 
 
 
@@ -262,27 +281,26 @@
 >
 > - 完全隐藏：元素从渲染树中消失，不占据空间。
 > - 视觉上的隐藏：屏幕中不可见，占据空间。
-> - 语义上的隐藏：读屏软件不可读，但正常占据空。
+> - 语义上的隐藏：读屏软件不可读，但正常占据空间。
 >
 > **完全隐藏**
 >
-> (1) display 属性
+> (1) css display 属性
 >
 > ```css
 > display: none;
 > ```
 >
-> (2) hidden 属性
+> (2) 标签 hidden 属性
 > HTML5 新增属性，相当于 display: none
 >
 > ```html
-> <div hidden>
-> </div>
+> <div hidden></div>
 > ```
 >
 > **视觉上的隐藏**
 >
-> (1) 设置 posoition 为 absolute 或 fixed，通过设置 top、left 等值，将其移出可视区域。
+> (1) 设置 position 为 absolute 或 fixed，通过设置 top、left 等值，将其移出可视区域。
 >
 > ```css
 > position:absolute;
@@ -290,7 +308,7 @@
 > ```
 >
 > (2) 设置 position 为 relative，通过设置 top、left 等值，将其移出可视区域。
->
+> position relative 是根据元素的当前位置进行偏移，不会影响其他兄弟元素的布局
 > ```css
 > position: relative;
 > left: -99999px;
@@ -298,13 +316,16 @@
 > ```
 >
 > (3) 设置 margin 值，将其移出可视区域范围（可视区域占位）。
->
-> ```js
+> 
+> ```css
 > margin-left: -99999px;
 > height: 0;
 > ```
 >
-> 语义上隐藏
+> (4) [不确定是不是] opacity: 0、visibility: hidden -> 渲染的时候会继续占据空间
+>
+>
+> **语义上隐藏**
 >
 > *aria-hidden 属性*
 >
@@ -344,17 +365,6 @@
 > <img src="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2021-11-03-010804.png" alt="image-20210816174742449" style="zoom:50%;" />
 
 
-
-### 14. 分析比较 *opacity: 0、visibility: hidden、display: none* 优劣和适用场景
-
-> 参考答案：
->
-> 1. display: none (不占空间，不能点击)（场景，显示出原来这里不存在的结构）
-> 2. visibility: hidden（占据空间，不能点击）（场景：显示不会导致页面结构发生变动，不会撑开）
-> 3. opacity: 0（占据空间，可以点击）（场景：可以跟transition搭配）
-
-
-
 ### 15. 讲一下*png8、png16、png32*的区别，并简单讲讲 *png* 的压缩原理
 
 > 参考答案：
@@ -387,20 +397,16 @@
 
 
 
-### 17. 介绍下 *positon* 属性
+### 17. 介绍下 *position* 属性
 
 > 参考答案：
 >
 > position 属性主要用来定位，常见的属性值如下：
 >
 > - `absolute` 绝对定位，相对于 `static` 定位以外的第一个父元素进行定位。
->
 > - `relative` 相对定位，相对于其自身正常位置进行定位。
->
 > - `fixed` 固定定位，相对于浏览器窗口进行定位。
->
 > - `static` 默认值。没有定位，元素出现在正常的流中。
->
 > - `inherit` 规定应该从父元素继承 position 属性的值。
 > - `sticky` 粘性定位，当元素在容器中被滚动超过指定的偏移值时，元素在容器内固定在指定位置。
 
@@ -415,6 +421,7 @@
 > 利用盒模型的 `border` 属性上下左右边框交界处会呈现出平滑的斜线这个特点，通过设置不同的上下左右边框宽度或者颜色即可得到三角形或者梯形。
 >
 > 如果想实现其中的任一个三角形，把其他方向上的 `border-color` 都设置成透明即可。
+> 在三角形的基础上增加宽或者高的值，就可以实现梯形
 >
 > 示例代码如下：
 >
@@ -424,12 +431,12 @@
 >
 > ```css
 > div{
-> width: 0;
-> height: 0;
-> border: 10px solid red;
-> border-top-color: transparent;
-> border-left-color: transparent;
-> border-right-color: transparent;
+>   width: 0;
+>   height: 0;
+>   border: 10px solid red;
+>   border-top-color: transparent;
+>   border-left-color: transparent;
+>   border-right-color: transparent;
 > }
 > ```
 
@@ -441,13 +448,13 @@
 >
 > **方法1：利用 CSS3 的 vw 单位**
 >
-> `vw` 会把视口的宽度平均分为 100 份
+> `vw` ：浏览器可见视口【宽度】的百分比（1vw代表视窗【宽度】的1%）会把视口的宽度平均分为 100 份
 >
 > ```
 > .square {
->  width: 10vw;
->  height: 10vw;
->  background: red;
+>     width: 10vw;
+>     height: 10vw;
+>     background: red;
 > }
 > ```
 >
@@ -455,10 +462,10 @@
 >
 > ```
 > .square {
->  width: 10%;
->  padding-bottom: 10%; 
->  height: 0; // 防止内容撑开多余的高度
->  background: red;
+>     width: 10%;
+>     padding-bottom: 10%; 
+>     height: 0; // 防止内容撑开多余的高度
+>     background: red;
 > }
 > ```
 
@@ -472,7 +479,7 @@
 >
 > **第一种：flex**
 >
-> ```
+> ```css
 > <div class="container">
 >  <div class="left">left</div>
 >  <div class="main">main</div>
