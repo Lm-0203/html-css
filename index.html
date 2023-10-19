@@ -74,8 +74,32 @@
       }
     </style>
   </head>
-  <body>
-    
-  </body>
-  <script></script>
+  <body></body>
+  <script>
+    // 这就不是很好办了啊，
+    // 怎么整？
+    // 把candidate的email拿出来，然后转化成数组
+    // 然后在遍历数组里面的每一项看看是不是在可以用的数组里面，再把过滤完的转换成一个字符串
+    // 可以把已经处理完的，从 email list 里面拿出去，这个就可以减少循环了 -> 前提是一个email对应一个candidate，不可能说两个人有同一个email吧
+
+    const emailList = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
+    const candidateList = [
+      { email: "1,12,2" },
+      { email: "3,4" },
+      { email: "23,8,9" },
+      { email: "24,29,30" },
+    ];
+
+    const arr = candidateList
+      .map((item) => {
+        item.email = item.email
+          .split(",")
+          .filter((email) => emailList.includes(email))
+          .join(",");
+        return item;
+      })
+      .filter((item) => item.email);
+
+    console.log(arr);
+  </script>
 </html>
