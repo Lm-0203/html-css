@@ -3,7 +3,7 @@
 + 网页的宽度自动调整
 + 尽量少用绝对宽度，可以用百分比
 + 字体要使用 rem / em 作为单位
-  + rem 就是根结点字体大小是一个相对单位
+  + rem 就是根节点字体大小是一个相对单位
   + 所以要根据用户屏幕的尺寸动态的设置 html 根结点的字体大小
 
 
@@ -48,7 +48,7 @@
     ```
   + max-width
     ```css
-    /* 屏幕尺寸小于400的时候满足 */
+    /* 屏幕尺寸小于500的时候满足 */
     @media (max-width: 500px) {
       div {
         background-color: lightblue;
@@ -201,7 +201,7 @@
 
   ```html
   <div class="container">
-    <!-- 所以要尺寸下，都是响应的列数 -->
+    <!-- 所有尺寸下，都是响应的列数 -->
     <div class="row">
       <div class="col-8">所有尺寸下，都占8列</div>
       <div class="col-4">所有尺寸下，都占4列</div>
